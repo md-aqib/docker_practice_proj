@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+  wordpress-website:
+    image: wordpress
+    restart: always
+    ports:
+      - 3000:80
+    environment:
+      WORDPRESS_DB_HOST: wordpress-database
+      WORDPRESS_DB_USER: aqib123
+      WORDPRESS_DB_PASSWORD: aqib123
+      WORDPRESS_DB_NAME: mydb
+    #volumes:
+      #- wordpress-data:/var/www/html
+    #networks:
+      #- milkyway
+
+  wordpress-database:
+    image: mysql:5.7
+    platform: linux/amd64
+    environment:
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: aqib123
+      MYSQL_PASSWORD: aqib123
+      MYSQL_RANDOM_ROOT_PASSWORD: "1"
+    #volumes:
+      #- db:/var/lib/mysql
+    #networks:
+      #- milkyway
+
+  #volumes:
+    #wordpress-data:
+    #db:
+  #networks:
+    #milkyway:
+
